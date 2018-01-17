@@ -59,6 +59,7 @@
 		  	}
 		  	#appimage {
 		  		display:absolute;
+		  		margin-top:20px;
 		  		text-align:center;
 		  		transform:translate3d(0,0,0);
 		  	}
@@ -100,6 +101,8 @@
 		  	h1 {
 		  		font-size:3em;
 		  		text-align:center;
+		  		margin-top:-10px;
+		  		padding:20px;
 		  	}
 		  	footer {
 		  		position:fixed;
@@ -112,58 +115,86 @@
 		  		background:rgba(100,100,100,0.2);
 		  		font-size:0.8em;
 		  	}
+		  	input {
+		  		font-size:1.2em;
+		  		width:40%;
+		  	}
+
 		</style>
+
+	</head>
+	<body>
+	  <div id="background">
+	  	<div id="appimage">
+	  		<img src="./images/kino_app.png">
+	  	</div>
+	  </div>	
+	  <div id="claim">
+	  	<h1>Kino APParet!</h1>
+
+	  	<p>
+	  		We are starting the journey towards the Kino Kabaret app and we need you!
+	  	</p>
+	  	<p>
+	  		This app will revolutionize the way we Kino. No more lost material, no more hours of foraging the net or Vimeo for a film from years past, no more forwarding to multiple people about a project. 
+	  	</p>
+	  	<p>
+	  		Easier online and offline access to all the movies and their assets, location scouting, photo mapping, cell information and event management. Everything together in one app, on one blockchain and stored on the distributed web.
+	  	</p>	
+	  	<h3>
+	  		For now:
+	  	</h3>
+	  	<p>
+	  		We would like to invite you to join the Kino Kabaret App mailing list so we can keep you informed about our progress and ask for help when we need it.
+
+		<div id="mc_embed_signup">
+			<form action="https://kinokabaret.us17.list-manage.com/subscribe/post?u=6f64a3279d0935a7281852de8&amp;id=cab630e251" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate onsubmit="toggleThankyou()">
+				<div id="mc_embed_signup_scroll">
+					<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" type="email" required>
+					<br>
+					<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" onsubmit="toggleThankyou()" style="height:20px!important;width:200px">
+					<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+					<div style="position: absolute; left: -5000px;" aria-hidden="true">
+						<input type="text" name="b_6f64a3279d0935a7281852de8_cab630e251" tabindex="-1" value="">
+					</div>
+
+				</div>
+			</form>
+		</div>
+		<div id="thankyou" style="display:none">
+			<h3>Danke / Thanks / Merci <img src="images/lukas.png" /></h3>
+			BTW, here we have a Lukas in his native environment. You may think that he is giving you the thumbs up, but really he is counting. That is German for "one". Now you know.
+		</div>
+	  	</p>
+	  	<footer>
+	  		<p>
+	  			<a href="mailto:support@kinokabaret.com">support@kinokabaret.com</a> A project of Hamburger Kino e.V. <a href="http://hamburgerkino.de/contact/impressum/" target="_blank">Impressum / Imprint</a>  
+	  		</p>
+	  	</footer>
+		</div>
+		<script>
+			var w=window,d=document,e=d.documentElement,g=d.getElementsByTagName('body')[0],x=w.innerWidth||e.clientWidth||g.clientWidth,y=w.innerHeight||e.clientHeight||g.clientHeight, stylesheet=document.styleSheets[0],form=d.getElementById('mc_embed_signup'),thankyou=d.getElementById('thankyou');
+			function toggleThankyou() {
+				thankyou.style.display="block";
+				form.style.display="none";
+			}
+			function rotateLogo() {
+				window.onmousemove = function(e) {
+				    this.x2 = Math.round(((x/	2) - e.pageX)/6.283); 
+				    this.y2 = Math.round(((y/ 2) - e.pageY)/6.283); 
+				    stylesheet.cssRules[1].style["transform"]="rotateX("+this.x2+"deg) rotateY("+this.y2+"deg)";
+				  	requestAnimationFrame(rotateLogo);
+				}
+			}
+			requestAnimationFrame(rotateLogo);
+
+		</script>	
+		<script src="config.js"></script>
+		<script src="index.js"></script>
 		<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/6f64a3279d0935a7281852de8/19a6e47d2c33cedb80723c32e.js");
 		</script>
-	</head>
-<body>
-  <div id="background">
-  	<div id="appimage">
-  		<img src="./images/kino_app.png">
-  	</div>
-  </div>	
-  <div id="claim">
-  	<h1>Kino APParet!</h1>
 
-  	<p>
-  		We have started the journey towards the Kino Kabaret app and we need your help!
-  	</p>
-  	<p>
-  		This app will revolutionize the way we do Kino. No more losing material, no more hours of foraging the net or Vimeo for a film from years past, no more forwarding to multiple people about a project. 
-  	</p>
-  	<p>
-  		Easier access to all movies and info, locations, photos, cell information and dates. Everything together in one app, on one blockchain and stored on the distributed web.
-  	<h3>
-  		For now:
-  	</h3>
-  	<p>
-  		We would like to invite you to join the Kino Kabaret App mailing list so we can keep you informed about our progress and ask for help when we need it.
-  	</p>
+		<!-- nothingismagick / art, design & consulting-->
 
-
-
-  	</p>
-  	<footer>
-  		<p>
-  			<a href="mailto:support@kinokabaret.com">support@kinokabaret.com</a> A project of Hamburger Kino e.V. <a href="http://hamburgerkino.de/contact/impressum/" target="_blank">Impressum / Imprint</a>  
-  	</footer>
-	</div>
-	<script>
-		var w=window,d=document,e=d.documentElement,g=d.getElementsByTagName('body')[0],x=w.innerWidth||e.clientWidth||g.clientWidth,y=w.innerHeight||e.clientHeight||g.clientHeight, stylesheet=document.styleSheets[0];
-
-		function rotateLogo() {
-			window.onmousemove = function(e) {
-			    this.x2 = Math.round(((x/	2) - e.pageX)/6.283); 
-			    this.y2 = Math.round(((y/ 2) - e.pageY)/6.283); 
-			    stylesheet.cssRules[1].style["transform"]="rotateX("+this.x2+"deg) rotateY("+this.y2+"deg)";
-			  	requestAnimationFrame(rotateLogo);
-			}
-		}
-		requestAnimationFrame(rotateLogo);
-
-	</script>	
-	<script src="config.js"></script>
-	<script src="index.js"></script>
-	<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us17.list-manage.com","uuid":"6f64a3279d0935a7281852de8","lid":"cab630e251"}) })</script>
-</body>
-
+	</body>
+</html>
