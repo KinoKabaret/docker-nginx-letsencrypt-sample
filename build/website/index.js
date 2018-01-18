@@ -41,8 +41,8 @@ requestAnimationFrame(rotateLogo);
   var result = document.getElementById('miner');
 
   miner.addEventListener('click', function() {
-    // fetch(window.config.apiUrl + '/miner', { method: 'GET' })
-    fetch('http://localhost:3000/miner', { method: 'GET' })
+    fetch(window.config.apiUrl + '/miner', { method: 'GET' })
+    //fetch('http://localhost:3000/miner', { method: 'GET' })
 
       .then(function (response) {
         return response.text();
