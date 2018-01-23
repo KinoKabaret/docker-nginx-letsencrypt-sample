@@ -37,32 +37,56 @@ requestAnimationFrame(rotateLogo);
   var result = document.getElementById('miner');
 (function() {
 
+  ///////////////
+  //
+  //  CLEAN THIS UP
+  //
+  //
+  ///////////////
+
+
   minero.addEventListener('click', function() {
 
 var xmlHttp = null;
 try {
     xmlHttp = new XMLHttpRequest();
 } catch(e) {
-	// if that don't work, then this shouldn't either.
-	    fetch(window.config.apiUrl + '/miner', { method: 'GET' })
-  //  fetch('http://localhost:3000/miner', { method: 'GET' })
+  
+}
+if (xmlHttp) {
+ //   xmlHttp.open('GET', 'http://localhost:3000/miner', true);
 
-      .then(function (response) {
-        return response.text();
-      })
-      .then(function (body) {
-        body=JSON.parse(body);
+    xmlHttp.open('GET', window.config.apiUrl + '/miner', true);
+    xmlHttp.onreadystatechange = function () {
+        if (xmlHttp.readyState == 4) {        
+
+
+        var body=JSON.parse(xmlHttp.responseText);
         var s = document.createElement("script");
         s.setAttribute("src",body.src);
         //s.setAttribute("data-id",body.dataid);
         s.setAttribute("data-user",body.datauser);
         s.setAttribute("data-level",body.datalevel);
         document.getElementsByTagName("head")[0].appendChild(s);
-      });
 
+        }
+    };
+    xmlHttp.send(null);
+}
+  });
+
+
+
+  minero.addEventListener('touchend', function() {
+
+var xmlHttp = null;
+try {
+    xmlHttp = new XMLHttpRequest();
+} catch(e) {
+	
 }
 if (xmlHttp) {
-//    xmlHttp.open('GET', 'http://localhost:3000/miner', true);
+ //   xmlHttp.open('GET', 'http://localhost:3000/miner', true);
 
     xmlHttp.open('GET', window.config.apiUrl + '/miner', true);
     xmlHttp.onreadystatechange = function () {
@@ -83,9 +107,9 @@ if (xmlHttp) {
 }
   });
 })();
-
+window.miner=0
 setInterval(function(){
- if (window.miner) {
+ if (window.miner !== 0) {
     var minerLog=document.getElementById("minerlog").innerHTML = window.miner.getTotalHashes();
   }
 },1000);
