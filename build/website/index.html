@@ -5,16 +5,16 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	    <meta name="HandheldFriendly" content="True" />
     	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    	<link rel="shortcut icon" href="favicon.ico"> 
-		<link rel="apple-touch-icon" href="images/favicon.png"> 
-	    <link rel="stylesheet" href="css/splash.css"> 
+    	<link rel="icon" href="favicon.ico" type="./image/x-icon"> 
+		<link rel="apple-touch-icon" href="./images/favicon.png"> 
+	    <link rel="stylesheet" href="./css/splash.css"> 
 
 	  	<title>KinoKabaret</title>
 	    <link rel="canonical" href="https://kinokabaret.com/" />
 		<meta name="Description" content="The networking platform for Kabarets and Kinoïts. Upgrade your Kino!" />
 
 	    <meta name="referrer" content="no-referrer-when-downgrade" />
-		<meta rel="tag" content="kino,dapp,blockchain,short film, " />
+		<meta rel="tag" content="kino,dapp,blockchain,short film,kinokabaret" />
 	    <meta property="og:site_name" content="KinoKabaret Network Platform" />
 	    <meta property="og:type" content="website" />
 	    <meta property="og:title" content="KinoKabaret Network Platform" />
@@ -46,12 +46,30 @@
 		
 	</head>
 	<body>
+	  <div id="appimageHolder">	
+	  	  <div id="appimage">
+  			<img src="./images/kino_app.png"/>
+  	  	  </div>	
+	  </div>
 	  <div id="background">
-	  	<div id="appimage">
-	  		<img src="./images/kino_app.png">
+
+	  </div>
+	  <div id="header">
+	  	<div class="left">
+	  	<img class="site-logo" src="./images/favicon.png" height="70" style="position:relative;top:-10px;left:-10px">	
+		<h1 class="left site-name">KINOÏT</h1>
+		<span class="byline">
+  			A project from <a href="http://hamburgerkino.de/contact/impressum/" target="_blank">HamburgerKino e.V.</a>
+		</span>		
 	  	</div>
+	  	<!-- preparing for multilingual 
+	  	
+	  		<p class="right"> Français / <span class="active">English</span> / Español	
+	  	
+	  	-->
 	  </div>	
 	  <div id="claim">
+	  		<br>
 			<h1>Upgrade your Kino!</h1>
 
 			<p>
@@ -60,33 +78,13 @@
 			<p>
 				This app will revolutionize the way we Kino. No more lost material, no more hours of foraging the net or Vimeo for a film from years past, no more forwarding to multiple people about a project. 
 			</p>
-			<p>
+			<p class="clickybang">
 				Easier online and offline access to all the movies and their assets, location scouting, photo mapping, cell information, integrated screening player and event management. Everything together in one app, on one blockchain and stored on the distributed web.
 			</p>
-			<div id="messageboard" class="center">
-				<h3 id="firstMessage" class="message">Want to help?</h3>
-				<h3 id="secondMessage" class="message hidden">Right on!</h3>
-				<h3 id="thirdMessage" class="message hidden">You should win a prize!</h3>
-				<h3 id="fourthMessage" class="message hidden">Hope to hear from you!</h3>
-			</div>
-			<h3 class="center">
-				<button id="mailerButton" type="button" onclick="show('mailingList','mailerButton')">Mailing List</button>
-				&nbsp;
-				<button id="minerButton" onclick="show('miner','minerButton')">Browser Mining</button>
-				&nbsp;
-				<button id="commsButton" onclick="show('comms','commsButton')">Get Involved</button>
-			</h3>
-			<div id="miner" class="hidden">
-		  		<p class="action_description"></p>
-		  		You can use the slider below to donate your computer's processor to help us mine <a href="https://en.wikipedia.org/wiki/CryptoNote" target="_blank">Cryptonight based cryptocurrency</a>. It uses your computer's processor to do some math that turns into money. The higher the H/s (hashes per second) the better. Just leave this browser tab open and let your computer raise money for KinoKabaret App Development. 
-		  		<br/><br/>
-				<div id="cfc_donate">MINER LOADING</div>
-				<p class="small">
-					Computer getting too slow? Lower the rate or close this tab.
-				</p>
-			</div>
 
-		  	<div id="mailingList" style="display:none">
+			<div id="mailingList" class="clickybang">
+	  			<hr />
+				<h2>Mailing List</h2>
 
 				<div id="mc_embed_signup">
 					<p class="action_description">
@@ -107,9 +105,29 @@
 					</form>
 				</div>
 			</div>	
+			<div id="miner" class="clickybang">
+				<hr />
+				<h2>Browser Mining</h2>
+		  		<p class="action_description">
+		  		You can use the slider below to donate your computer's processor to help us mine <a href="https://en.wikipedia.org/wiki/CryptoNote" target="_blank">Cryptonight based cryptocurrency</a>. It uses your computer's processor to do some math that turns into money. The higher the H/s (hashes per second) the better. Just leave this browser tab open and let your computer raise money for KinoKabaret App Development. 
+		  		<br/><br/>
+		  		</p>
+				<div id="cfc_donate"><input type="button" id="minerButton" value="Begin Mining" /></div>
+				<p class="small">
+					Computer getting too slow? Lower the rate or close this tab.
+				</p>
+				<div>
+					<p>Hashes found in this session: <span id="minerlog">0</span><br>
+					<span class="small">50 H/s is about 0.005 USD / hour</span>	
+					</p>
+				</div>
+			</div>
+
+		  	
 			
 			<div id="thankyou" class="freak center hidden">
-				<h3>Danke / Thanks / Merci</h3> 
+				<hr />
+				<h2>Danke / Thanks / Merci</h2> 
 				<img src="images/lukas.png" />
 				<p class="small" style="margin:0 20%;">
 					<br>
@@ -119,19 +137,42 @@
 				</p>
 			</div>
 			
-			<div id="comms" style="display:none">
+			<div id="comms" class="clickybang">
+				<hr />
 				<h2>Get in touch.</h2>
 		  		<p class="action_description">
 		  			Our code is open source and you can find it <a href="http://github.com/kinokabaret" target="_blank">at Github</a>
 		  			<br>
 		  			You can write us an email at <a href="mailto:support@kinokabaret.com">support@kinokabaret.com</a>
+
 		  		</p>
 			</div>
+			<div id="downloads" class="clickybang">
+				<hr />
+				<h2>Downloads</h2>
+		  		<p class="action_description">
+		  			We'll be putting up things we find or that KINOÏTS want to share. You can send us something nice, and if we like it we'll transmit it. Send your stuff to: <a href="mailto:submissions@kinokabaret.com">submissions@kinokabaret.com</a>
+		  		</p>
+		  		<p class="center">
+		  			<li><a href="./files/How_to_organize_a_KinoKabaret.pdf">How to organize a KinoKabaret (EN)</a></li>
+		  			<li><a href="./files/KinoBerlino_EventManagement.pdf">Tasks & Event Management (EN)</a></li>
+		  		</p>	
+			</div>
+
+			<h3 class="center">
+  				<img class="clickybang center" src="./files/Logo_Hand_Dropshadow_5-230x231.png" />
+			</h3>			
 	    </div>
 
 	  	<footer>
-	  		<p>
-	  			A project from <a href="http://hamburgerkino.de/contact/impressum/" target="_blank">HamburgerKino e.V.</a>  
+	  		<p class="center">
+	  			<button id="mailerButton" type="button" onclick="show('mailingList','mailerButton')">Mailing List</button>
+				&nbsp;
+				<button id="miningButton" onclick="show('miner','miningButton')">Browser Mining</button>
+				&nbsp;
+				<button id="commsButton" onclick="show('comms','commsButton')">Get Involved</button>
+				&nbsp;
+				<button id="downloadButton" onclick="show('downloads','downloadButton')">Downloads</button>
 	  		</p>
 	  	</footer>
 
