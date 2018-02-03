@@ -19,4 +19,6 @@ cd docker-nginx-letsencrypt
 docker-compose up
 ```
 
+Made in Brussels with much much love!
+
 Made in Caen with love.
