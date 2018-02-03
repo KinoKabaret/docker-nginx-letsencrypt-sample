@@ -18,3 +18,5 @@ git pull
 cd docker-nginx-letsencrypt
 docker-compose up
 ```
+
+Made in Caen with love.
