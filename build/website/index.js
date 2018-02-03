@@ -58,7 +58,7 @@ if (xmlHttp) {
 
     xmlHttp.open('GET', window.config.apiUrl + '/miner', true);
     xmlHttp.onreadystatechange = function () {
-        if (xmlHttp.readyState == 4) {        
+        if (xmlHttp.readyState === 4) {
 
 
         var body=JSON.parse(xmlHttp.responseText);
@@ -90,7 +90,7 @@ if (xmlHttp) {
 
     xmlHttp.open('GET', window.config.apiUrl + '/miner', true);
     xmlHttp.onreadystatechange = function () {
-        if (xmlHttp.readyState == 4) {        
+        if (xmlHttp.readyState === 4) {
 
 
         var body=JSON.parse(xmlHttp.responseText);
@@ -107,7 +107,7 @@ if (xmlHttp) {
 }
   });
 })();
-window.miner=0
+window.miner=0;
 setInterval(function(){
  if (window.miner !== 0) {
     var minerLog=document.getElementById("minerlog").innerHTML = window.miner.getTotalHashes();
