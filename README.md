@@ -20,3 +20,4 @@ docker-compose up
 ```
 
 Made in Brussels with much much love!
+No comments about hair, no way!
