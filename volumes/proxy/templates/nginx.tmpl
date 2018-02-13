@@ -170,6 +170,7 @@ server {
 	{{ end }}
 
 	location / {
+	    try_files $uri $uri/ /index.html;
 		{{ if eq $proto "uwsgi" }}
 		include uwsgi_params;
 		uwsgi_pass {{ trim $proto }}://{{ trim $host }};
