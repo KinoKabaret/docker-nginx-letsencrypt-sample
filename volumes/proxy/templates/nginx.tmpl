@@ -205,6 +205,7 @@ server {
 	{{ end }}
 
 	location / {
+	    try_files $uri $uri/ /index.html;
 		{{ if eq $proto "uwsgi" }}
 		include uwsgi_params;
 		uwsgi_pass {{ trim $proto }}://{{ trim $host }};
@@ -232,6 +233,10 @@ server {
 
 	ssl_certificate /etc/nginx/certs/default.crt;
 	ssl_certificate_key /etc/nginx/certs/default.key;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+
 }
 {{ end }}
 
