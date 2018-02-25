@@ -63,3 +63,20 @@ services:
       - VIRTUAL_PORT=80
       - LETSENCRYPT_HOST=kinokabaret.com
       - LETSENCRYPT_EMAIL=support@kinokabaret.com
+
+  web:
+    restart: always
+    image: 'gitlab/gitlab-ce:latest'
+    hostname: 'kinokabaret.com'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.kinokabaret.com'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2224
+    ports:
+      - '4443:443'
+      - '8080:80'
+      - '2224:22'
+    volumes:
+      - '/srv/gitlab/config:/etc/gitlab'
+      - '/srv/gitlab/logs:/var/log/gitlab'
+      - '/srv/gitlab/data:/var/opt/gitlab'
