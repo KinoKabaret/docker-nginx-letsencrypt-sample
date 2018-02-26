@@ -64,18 +64,18 @@ services:
       - LETSENCRYPT_HOST=kinokabaret.com
       - LETSENCRYPT_EMAIL=support@kinokabaret.com
 
-  web:
+  gitlab:
     restart: always
     image: 'gitlab/gitlab-ce:latest'
-    hostname: 'kinokabaret.com'
+    hostname: 'gitlab.kinokabaret.com'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'https://gitlab.kinokabaret.com'
-        gitlab_rails['gitlab_shell_ssh_port'] = 2224
+        external_url 'http://gitlab.kinokabaret.com:30080'
+        gitlab_rails['gitlab_shell_ssh_port'] = 30022
     ports:
-      - '4443:443'
-      - '8080:80'
-      - '2224:22'
+      - '30443:443'   #didn't find the way to enable both http ports
+      - '30080:30080'
+      - '30022:22'
     volumes:
       - '/srv/gitlab/config:/etc/gitlab'
       - '/srv/gitlab/logs:/var/log/gitlab'
