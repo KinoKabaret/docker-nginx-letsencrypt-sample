@@ -69,11 +69,17 @@ services:
     image: 'gitlab/gitlab-ce:latest'
     hostname: 'gitlab.kinokabaret.com'
     environment:
+      VIRTUAL_HOST: gitlab.kinokabaret.com
+      VIRTUAL_NETWORK: nginx-proxy
+      VIRTUAL_PORT: 30080
+      LETSENCRYPT_HOST: gitlab.kinokabaret.com
+      LETSENCRYPT_EMAIL: support@kinokabaret.com
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'http://gitlab.kinokabaret.com:30080'
+        registry_external_url 'http://gitlab.kinokabaret.com:30080'
         gitlab_rails['gitlab_shell_ssh_port'] = 30022
     ports:
-      - '30443:443'   #didn't find the way to enable both http ports
+      - '30443:30443'   #didn't find the way to enable both http ports
       - '30080:30080'
       - '30022:22'
     volumes:
