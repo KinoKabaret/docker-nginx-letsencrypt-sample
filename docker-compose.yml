@@ -67,22 +67,45 @@ services:
   gitlab:
     restart: always
     image: 'gitlab/gitlab-ce:latest'
+    container_name: gitlab
     hostname: 'gitlab.kinokabaret.com'
     environment:
       VIRTUAL_HOST: gitlab.kinokabaret.com
       VIRTUAL_NETWORK: nginx-proxy
-      VIRTUAL_PORT: 30080
+      VIRTUAL_PORT: 30443
       LETSENCRYPT_HOST: gitlab.kinokabaret.com
       LETSENCRYPT_EMAIL: support@kinokabaret.com
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://gitlab.kinokabaret.com:30080'
-        registry_external_url 'http://gitlab.kinokabaret.com:30080'
+        external_url 'https://gitlab.kinokabaret.com:30443'
+        registry_external_url 'https://gitlab.kinokabaret.com'
         gitlab_rails['gitlab_shell_ssh_port'] = 30022
     ports:
-      - '30443:30443'   #didn't find the way to enable both http ports
-      - '30080:30080'
-      - '30022:22'
+      - '30443:30443'
+      - '30022:30022'
+    links:
+     - postgresql:postgresql
+     - redis:redis
     volumes:
       - '/srv/gitlab/config:/etc/gitlab'
       - '/srv/gitlab/logs:/var/log/gitlab'
       - '/srv/gitlab/data:/var/opt/gitlab'
+
+  redis:
+    restart: always
+    image: sameersbn/redis:latest
+    container_name: gitlab-redis
+    command:
+      - --loglevel warning
+    volumes:
+      - /srv/redis:/var/lib/redis
+
+  postgresql:
+    restart: always
+    image: sameersbn/postgresql:9.6-2
+    container_name: gitlab-postgresql
+    environment:
+      - POSTGRES_USER=gitlab
+      - POSTGRES_PASSWORD=gitlab
+      - POSTGRES_DB=gitlab_kk
+    volumes:
+      - /srv/postgresql:/var/lib/postgresql:rw
