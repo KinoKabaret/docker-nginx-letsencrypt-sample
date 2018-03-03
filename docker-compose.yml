@@ -64,19 +64,51 @@ services:
       - LETSENCRYPT_HOST=kinokabaret.com
       - LETSENCRYPT_EMAIL=support@kinokabaret.com
 
-  web:
+  gitlab:
     restart: always
     image: 'gitlab/gitlab-ce:latest'
-    hostname: 'kinokabaret.com'
+    container_name: gitlab
+    hostname: 'gitlab.kinokabaret.com'
     environment:
+      VIRTUAL_HOST: gitlab.kinokabaret.com
+      VIRTUAL_NETWORK: nginx-proxy
+      VIRTUAL_PORT: 443
+      VIRTUAL_PROTO: https
+      LETSENCRYPT_HOST: gitlab.kinokabaret.com
+      LETSENCRYPT_EMAIL: support@kinokabaret.com
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'https://gitlab.kinokabaret.com'
-        gitlab_rails['gitlab_shell_ssh_port'] = 2224
+        external_url 'https://gitlab.kinokabaret.com:443'
+        registry_external_url 'https://gitlab.kinokabaret.com'
+        gitlab_rails['gitlab_shell_ssh_port'] = 22
+        nginx['redirect_http_to_https'] = true
     ports:
-      - '4443:443'
-      - '8080:80'
-      - '2224:22'
+      - '30443:443'
+      - '30022:22'
+    links:
+     - postgresql:postgresql
+     - redis:redis
     volumes:
       - '/srv/gitlab/config:/etc/gitlab'
       - '/srv/gitlab/logs:/var/log/gitlab'
       - '/srv/gitlab/data:/var/opt/gitlab'
+      - './volumes/proxy/certs:/etc/gitlab/ssl:ro'
+
+  redis:
+    restart: always
+    image: sameersbn/redis:latest
+    container_name: gitlab-redis
+    command:
+      - --loglevel warning
+    volumes:
+      - /srv/redis:/var/lib/redis
+
+  postgresql:
+    restart: always
+    image: sameersbn/postgresql:9.6-2
+    container_name: gitlab-postgresql
+    environment:
+      - POSTGRES_USER=gitlab
+      - POSTGRES_PASSWORD=gitlab
+      - POSTGRES_DB=gitlab_kk
+    volumes:
+      - /srv/postgresql:/var/lib/postgresql:rw
