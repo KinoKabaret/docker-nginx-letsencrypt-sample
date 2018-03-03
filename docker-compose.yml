@@ -72,16 +72,18 @@ services:
     environment:
       VIRTUAL_HOST: gitlab.kinokabaret.com
       VIRTUAL_NETWORK: nginx-proxy
-      VIRTUAL_PORT: 30443
+      VIRTUAL_PORT: 443
+      VIRTUAL_PROTO: https
       LETSENCRYPT_HOST: gitlab.kinokabaret.com
       LETSENCRYPT_EMAIL: support@kinokabaret.com
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'https://gitlab.kinokabaret.com:30443'
+        external_url 'https://gitlab.kinokabaret.com:443'
         registry_external_url 'https://gitlab.kinokabaret.com'
-        gitlab_rails['gitlab_shell_ssh_port'] = 30022
+        gitlab_rails['gitlab_shell_ssh_port'] = 22
+        nginx['redirect_http_to_https'] = true
     ports:
-      - '30443:30443'
-      - '30022:30022'
+      - '30443:443'
+      - '30022:22'
     links:
      - postgresql:postgresql
      - redis:redis
