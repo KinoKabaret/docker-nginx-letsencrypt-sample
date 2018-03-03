@@ -91,6 +91,7 @@ services:
       - '/srv/gitlab/config:/etc/gitlab'
       - '/srv/gitlab/logs:/var/log/gitlab'
       - '/srv/gitlab/data:/var/opt/gitlab'
+      - './volumes/proxy/certs:/etc/gitlab/ssl:ro'
 
   redis:
     restart: always
